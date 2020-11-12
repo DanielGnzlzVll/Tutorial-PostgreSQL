@@ -198,7 +198,9 @@ Una sentencia hace referencia a una instruccion o conjunto de ordenes que se le 
     SET
         "curso_id" = 11,
         "edad" = "edad" + 1
-    WHERE "nombre" = 'Juana';
+    WHERE "nombre" ~ 'Juana';
+
+    -- el operador `~` permite usar regex POSIX
     ````
 
 1.  DELETE, esta sentencia nos permite borrar registros.
@@ -214,8 +216,11 @@ Una sentencia hace referencia a una instruccion o conjunto de ordenes que se le 
     ```sql
     -- Eliminar a benedicto
     DELETE FROM "Alumnos"
-    WHERE "nombre" = 'benedicto'
+    WHERE "nombre" ~* 'benedicto'
     LIMIT 1;
+
+    -- el operador `~*` tambien permite usar regex POSIX, pero
+    -- a diferencia de `~` es "case insensitive"
 
     -- Eliminar a todos los alumnos de latin, por que nadie les entiende
     DELETE FROM "Alumnos"
